@@ -1,8 +1,8 @@
 {
-  "name": "react-component-starter",
-  "version": "0.0.1",
-  "description": "React component.",
-  "main": "lib/Component.js",
+  "name": "react-photoswipe",
+  "version": "0.1.0-beta.1",
+  "description": "PhotoSwipe, PhotoSwipe component for ReactJS base on PhotoSwipe.",
+  "main": "lib/index.js",
   "scripts": {
     "start": "NODE_ENV=development node webpack.dev.server.js",
     "test": "NODE_ENV=development ./node_modules/karma/bin/karma start",
@@ -15,7 +15,10 @@
   "keywords": [
     "react-component",
     "react",
-    "component"
+    "component",
+    "react-photoswipe",
+    "photoswipe",
+    "gallery"
   ],
   "peerDependencies": {
     "react": "0.13.x"
@@ -64,12 +67,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourname/react-component.git"
+    "url": "https://github.com/vn38minhtran/react-photoswipe.git"
   },
-  "author": "Your Name",
+  "author": "Minh Tran",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/yourname/react-component/issues"
+    "url": "https://github.com/vn38minhtran/react-photoswipe/issues"
   },
-  "homepage": "https://github.com/yourname/react-component"
+  "homepage": "https://github.com/vn38minhtran/react-photoswipe"
 }

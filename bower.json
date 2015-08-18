@@ -1,12 +1,15 @@
 {
-  "name": "react-component-starter",
-  "version": "0.0.1",
-  "description": "React component.",
+  "name": "react-photoswipe",
+  "version": "0.1.0-beta.1",
+  "description": "PhotoSwipe, PhotoSwipe component for ReactJS base on PhotoSwipe.",
   "main": "dist/Component.js",
   "keywords": [
     "react-component",
     "react",
-    "component"
+    "component",
+    "react-photoswipe",
+    "photoswipe",
+    "gallery"
   ],
   "license": "MIT",
   "ignore": [

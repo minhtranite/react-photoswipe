@@ -1,38 +1,96 @@
-# React Component Starter
+# React PhotoSwipe
 
-## How to use:
+PhotoSwipe, PhotoSwipe component for ReactJS base on [PhotoSwipe](http://photoswipe.com/).
 
-### Setup
-```
-git clone git@github.com:vn38minhtran/react-component-starter.git react-your-component
-cd react-your-component
-rm -r .git
-npm install && bower install
+## Installation
+
+```bash
+npm install --save react-photoswipe
 ```
 
-Change information of 'bower.json, package.json, README.md'.
+## Usage
 
-### Dev
-```
-npm run start
+### PhotoSwipe
+
+```js
+import {PhotoSwipe} from 'react-photoswipe';
+
+let isOpen = true;
+
+let items = [
+  ...,
+  {
+    src: 'http://lorempixel.com/1200/900/sports/2',
+    w: 1200,
+    h: 900,
+    title: 'Image 2'
+  }
+  ...
+];
+
+let options = {
+  //http://photoswipe.com/documentation/options.html
+};
+
+handleClose = () => {
+  isOpen: false
+};
+
+...
+<PhotoSwipe isOpen={isOpen} items={items} options={options} onClose={handleClose}/>
+
 ```
 
-### Test
-```
-npm run test
+### PhotoSwipeGallery
+
+```js
+import {PhotoSwipeGallery} from 'react-photoswipe';
+
+let items = [
+  ...,
+  {
+    src: 'http://lorempixel.com/1200/900/sports/2',
+    thumbnail: 'http://lorempixel.com/120/90/sports/2'
+    w: 1200,
+    h: 900,
+    title: 'Image 2'
+  }
+  ...
+];
+
+let options = {
+  //http://photoswipe.com/documentation/options.html
+};
+
+getThumbnailContent = (item) => {
+  return (
+    <img src={item.thumbnail} with={120} height={90}/>
+  );
+}
+
+...
+<PhotoSwipeGallery items={items} options={options} thumbnailContent={getThumbnailContent}/>
 ```
 
-### Preview example
-```
-npm run preview
-```
+## Props
 
-### Build example
-```
-npm run build
-```
+### PhotoSwipe
 
-### Build lib
-```
-npm run lib
-```
+| Name | Type | Default | Required | Description |
+|------|------|---------|----------|-------------|
+| isOpen | bool | false | true |  |
+| items | array | [] | true | http://photoswipe.com/documentation/getting-started.html |
+| options | object | {} | false | http://photoswipe.com/documentation/options.html |
+| onClose | function |  | false | Callback after PhotoSwipe close |
+
+### PhotoSwipeGallery
+
+| Name | Type | Default | Required | Description |
+|------|------|---------|----------|-------------|
+| items | array | [] | true | http://photoswipe.com/documentation/getting-started.html |
+| options | object | {} | false | http://photoswipe.com/documentation/options.html |
+| thumbnailContent | function | `<img src={item.src} with='100' height='100'/>` | false | Thumbnail content |
+
+## Demo
+
+View [demo](http://vn38minhtran.github.io/react-photoswipe) or example folder.
