@@ -33,3 +33,16 @@ body {
   background-color: #F8F8F8;
   padding: 20px 0;
 }
+
+/* Thumbnail
+   ========================================================================== */
+.pswp-thumbnail {
+  display: inline-block;
+  width: 120px;
+  height: 90px;
+  margin: 0 10px 10px 0;
+  cursor: pointer;
+  img {
+    max-width: 100%;
+  }
+}

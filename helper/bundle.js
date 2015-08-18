@@ -1,7 +1,6 @@
 var WebpackDevServer = require('webpack-dev-server');
 var webpack = require('webpack');
-var objectAssign = require('object-assign');
-var portscanner = require('portscanner');
+var merge = require('lodash.merge');
 
 module.exports = function (config, options, host, port) {
   var defaultOptions = {
@@ -24,24 +23,17 @@ module.exports = function (config, options, host, port) {
     }
   };
 
-  options = objectAssign(defaultOptions, options || {});
-
+  options = merge(defaultOptions, options || {});
   host = host || 'localhost';
   port = port || 3001;
 
-  portscanner.findAPortNotInUse(port, port + 997, '127.0.0.1', function (error, newPort) {
-    if (error) {
-      console.log(error);
-    }
-    port = newPort;
-    var webpackDevServer = new WebpackDevServer(webpack(config), options);
+  var webpackDevServer = new WebpackDevServer(webpack(config), options);
 
-    webpackDevServer.listen(port, host, function (err) {
-      if (err) {
-        console.log(err);
-      } else {
-        console.log('Bundling project, please wait...');
-      }
-    });
+  webpackDevServer.listen(port, host, function (err) {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log('Bundling project, please wait...');
+    }
   });
 };

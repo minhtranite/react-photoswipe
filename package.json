@@ -20,7 +20,9 @@
   "peerDependencies": {
     "react": "0.13.x"
   },
-  "dependencies": {},
+  "dependencies": {
+    "photoswipe": "^4.1.0"
+  },
   "devDependencies": {
     "autoprefixer-loader": "^2.0.0",
     "babel-core": "^5.3.1",
@@ -49,11 +51,10 @@
     "karma-webpack": "^1.5.1",
     "less": "^2.4.0",
     "less-loader": "^2.2.0",
+    "lodash.merge": "^3.3.2",
     "node-sass": "^3.1.1",
-    "object-assign": "^3.0.0",
     "opn": "^3.0.2",
     "phantomjs": "^1.9.17",
-    "portscanner": "^1.0.0",
     "react-hot-loader": "^1.2.8",
     "run-sequence": "^1.1.1",
     "sass-loader": "^1.0.2",

@@ -6,5 +6,5 @@ module.exports = WebpackConfig({
   debug: false,
   optimize: true,
   saveStats: false,
-  failOnError: false
+  failOnError: true
 });
