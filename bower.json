@@ -1,0 +1,23 @@
+{
+  "name": "react-component-starter",
+  "version": "0.0.1",
+  "description": "React component.",
+  "main": "dist/Component.js",
+  "keywords": [
+    "react-component",
+    "react",
+    "component"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "bootstrap-customize": "~3.3.4"
+  }
+}

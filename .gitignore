@@ -1,0 +1,4 @@
+.idea
+dist
+node_modules
+example/bower_components

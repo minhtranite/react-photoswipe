@@ -1,0 +1,74 @@
+{
+  "name": "react-component-starter",
+  "version": "0.0.1",
+  "description": "React component.",
+  "main": "lib/Component.js",
+  "scripts": {
+    "start": "NODE_ENV=development node webpack.dev.server.js",
+    "test": "NODE_ENV=development ./node_modules/karma/bin/karma start",
+    "preview": "NODE_ENV=production node webpack.preview.server.js",
+    "prebuild": "node scripts/pre-build.js",
+    "build": "NODE_ENV=production webpack -p --config webpack.build.config.js --progress --profile --colors --bail",
+    "postbuild": "node scripts/post-build.js",
+    "lib": "gulp lib"
+  },
+  "keywords": [
+    "react-component",
+    "react",
+    "component"
+  ],
+  "peerDependencies": {
+    "react": "0.13.x"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "autoprefixer-loader": "^2.0.0",
+    "babel-core": "^5.3.1",
+    "babel-eslint": "^3.1.5",
+    "babel-loader": "^5.1.2",
+    "babel-runtime": "^5.8.20",
+    "css-loader": "^0.15.3",
+    "del": "^1.2.0",
+    "eslint": "^0.24.1",
+    "eslint-loader": "^0.14.1",
+    "eslint-plugin-react": "^2.3.0",
+    "express": "^4.13.1",
+    "file-loader": "^0.8.1",
+    "frep": "^0.2.3",
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^2.3.1",
+    "gulp-babel": "^5.1.0",
+    "gulp-csso": "^1.0.0",
+    "gulp-sass": "^2.0.4",
+    "http-proxy": "^1.11.1",
+    "jasmine-core": "^2.2.0",
+    "json-loader": "^0.5.1",
+    "karma": "^0.12.31",
+    "karma-jasmine": "^0.3.5",
+    "karma-phantomjs-launcher": "^0.2.0",
+    "karma-webpack": "^1.5.1",
+    "less": "^2.4.0",
+    "less-loader": "^2.2.0",
+    "node-sass": "^3.1.1",
+    "object-assign": "^3.0.0",
+    "opn": "^3.0.2",
+    "phantomjs": "^1.9.17",
+    "portscanner": "^1.0.0",
+    "react-hot-loader": "^1.2.8",
+    "run-sequence": "^1.1.1",
+    "sass-loader": "^1.0.2",
+    "style-loader": "^0.12.2",
+    "webpack": "^1.10.1",
+    "webpack-dev-server": "^1.10.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourname/react-component.git"
+  },
+  "author": "Your Name",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yourname/react-component/issues"
+  },
+  "homepage": "https://github.com/yourname/react-component"
+}
