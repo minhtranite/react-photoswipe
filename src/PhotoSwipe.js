@@ -44,7 +44,9 @@ class PhotoSwipe extends React.Component {
   };
 
   componentWillUnmount = () => {
-    this.photoSwipe.destroy();
+    if (this.photoSwipe) {
+      this.photoSwipe.close();
+    }
   };
 
   openPhotoSwipe = (items, options) => {
