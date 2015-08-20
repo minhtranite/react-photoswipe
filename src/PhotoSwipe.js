@@ -1,8 +1,6 @@
 import React from 'react';
 import PhotoSwipeFn from 'photoswipe';
 import PhotoSwipeUIDefault from 'photoswipe/dist/photoswipe-ui-default.js';
-import 'photoswipe/dist/photoswipe.css';
-import 'photoswipe/dist/default-skin/default-skin.css';
 
 class PhotoSwipe extends React.Component {
   static propTypes = {

@@ -5,6 +5,8 @@ import Footer from './components/Footer.js';
 import {PhotoSwipe, PhotoSwipeGallery} from '../src/index.js';
 
 import './bower_components/bootstrap-customize/css/bootstrap.css';
+import 'photoswipe/dist/photoswipe.css';
+import 'photoswipe/dist/default-skin/default-skin.css';
 import './assets/styles/app.scss';
 
 class App extends React.Component {

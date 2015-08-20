@@ -10,7 +10,25 @@ npm install --save react-photoswipe
 
 ## Usage
 
-### PhotoSwipe
+### Styles
+
+#### With webpack:
+
+```js
+import 'react-photoswipe/node_modules/photoswipe/dist/photoswipe.css';
+import 'react-photoswipe/node_modules/photoswipe/dist/default-skin/default-skin.css';
+```
+
+#### Without webpack:
+
+```html
+<link rel="stylesheet" type="text/css" href="path/to/photoswipe.css">
+<link rel="stylesheet" type="text/css" href="path/to/default-skin/default-skin.css">
+```
+
+### JS
+
+#### PhotoSwipe
 
 ```js
 import {PhotoSwipe} from 'react-photoswipe';
@@ -41,7 +59,7 @@ handleClose = () => {
 
 ```
 
-### PhotoSwipeGallery
+#### PhotoSwipeGallery
 
 ```js
 import {PhotoSwipeGallery} from 'react-photoswipe';
