@@ -1,8 +1,8 @@
 {
   "name": "react-photoswipe",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "PhotoSwipe, PhotoSwipeGallery component for ReactJS base on PhotoSwipe.",
-  "main": "dist/Component.js",
+  "main": "dist/react-photoswipe.min.js",
   "keywords": [
     "react-component",
     "react",
