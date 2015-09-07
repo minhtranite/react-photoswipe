@@ -2,7 +2,7 @@ import 'babel-core/polyfill';
 import React from 'react';
 import Header from './components/Header.js';
 import Footer from './components/Footer.js';
-import {PhotoSwipe, PhotoSwipeGallery} from '../src/index.js';
+import {PhotoSwipe, PhotoSwipeGallery} from 'react-photoswipe';
 
 import './bower_components/bootstrap-customize/css/bootstrap.css';
 import 'photoswipe/dist/photoswipe.css';

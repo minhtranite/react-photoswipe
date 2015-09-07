@@ -9,7 +9,7 @@ module.exports = function (config) {
     preprocessors: {
       'test/spec/**/*.js': ['webpack']
     },
-    webpack: require('./webpack.test.config'),
+    webpack: require('./webpack.config'),
     webpackMiddleware: {
       noInfo: true
     },

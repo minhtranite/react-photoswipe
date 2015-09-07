@@ -3,7 +3,7 @@ var path = require('path');
 var config = require('./webpack.dev.config');
 
 var options = {
-  contentBase: path.join(__dirname, './example'),
+  contentBase: path.join(__dirname, './app'),
   hot: true
 };
 
