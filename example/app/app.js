@@ -1,5 +1,6 @@
 import 'babel-core/polyfill';
 import React from 'react';
+import ReactDOM from 'react-dom';
 import Header from './components/Header.js';
 import Footer from './components/Footer.js';
 import {PhotoSwipe, PhotoSwipeGallery} from 'react-photoswipe';
@@ -115,7 +116,7 @@ class App extends React.Component {
 }
 
 function run() {
-  React.render(<App />, document.body);
+  ReactDOM.render(<App />, document.getElementById('app'));
 }
 
 if (window.addEventListener) {
