@@ -31,7 +31,7 @@ module.exports = function (config, options, host, port) {
 
   webpackDevServer.listen(port, host, function (err) {
     if (err) {
-      console.log(err);
+      console.error(err);
     } else {
       console.log('Bundling project, please wait...');
     }

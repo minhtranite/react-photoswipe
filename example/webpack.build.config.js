@@ -5,6 +5,9 @@ module.exports = WebpackConfig({
   hash: true,
   debug: false,
   optimize: true,
+  progress: true,
+  profile: true,
+  bail: true,
   saveStats: true,
   failOnError: true,
   banner: true

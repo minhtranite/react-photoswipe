@@ -11,6 +11,9 @@ module.exports = function (options) {
     hot: false,
     hash: false,
     debug: false,
+    progress: false,
+    profile: false,
+    bail: false,
     optimize: false,
     saveStats: false,
     failOnError: false,
@@ -25,6 +28,10 @@ module.exports = function (options) {
   var entry = {
     app: path.join(__dirname, '../app/app.js')
   };
+
+  var alias = {};
+  alias[pkg.name + '$'] = path.join(__dirname, '../../src/index.js');
+  alias[pkg.name + '/src'] = path.join(__dirname, '../../src');
 
   var scssIncludePaths = [
     path.join(__dirname, '../app/bower_components'),
@@ -152,9 +159,7 @@ module.exports = function (options) {
     },
     resolve: {
       extensions: ['', '.jsx', '.js'],
-      alias: {
-        'react-photoswipe': path.join(__dirname, '../../src')
-      }
+      alias: alias
     },
     module: {
       preLoaders: [
@@ -179,7 +184,10 @@ module.exports = function (options) {
       net: 'mock',
       dns: 'mock'
     },
-    debug: options.debug
+    debug: options.debug,
+    progress: options.progress,
+    profile: options.profile,
+    bail: options.bail
   };
 
   if (options.devTool) {
