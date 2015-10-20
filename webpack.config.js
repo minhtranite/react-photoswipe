@@ -1,6 +1,11 @@
 var webpack = require('webpack');
 var path = require('path');
 var pkg = require('./package.json');
+var camelCase = require('camelcase');
+
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
 
 var plugins = [
   new webpack.DefinePlugin({
@@ -30,8 +35,16 @@ var loaders = [
 module.exports = {
   output: {
     filename: pkg.name + '.js',
-    library: pkg.name,
+    library: capitalizeFirstLetter(camelCase(pkg.name)),
     libraryTarget: 'umd'
+  },
+  externals: {
+    react: {
+      root: 'React',
+      commonjs: 'react',
+      commonjs2: 'react',
+      amd: 'react'
+    }
   },
   module: {
     loaders: loaders
