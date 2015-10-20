@@ -4,8 +4,15 @@ PhotoSwipe, PhotoSwipeGallery component for ReactJS base on [PhotoSwipe](http://
 
 ## Installation
 
+### NPM
+
 ```bash
 npm install --save react-photoswipe
+```
+
+### Bower
+```bash
+bower install --save react-photoswipe
 ```
 
 ## Usage
