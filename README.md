@@ -15,15 +15,13 @@ npm install --save react-photoswipe
 #### With webpack:
 
 ```js
-import 'react-photoswipe/node_modules/photoswipe/dist/photoswipe.css';
-import 'react-photoswipe/node_modules/photoswipe/dist/default-skin/default-skin.css';
+import 'react-photoswipe/lib/photoswipe.css';
 ```
 
 #### Without webpack:
 
 ```html
-<link rel="stylesheet" type="text/css" href="path/to/photoswipe.css">
-<link rel="stylesheet" type="text/css" href="path/to/default-skin/default-skin.css">
+<link rel="stylesheet" type="text/css" href="path/to/react-photoswipe/lib/photoswipe.css">
 ```
 
 ### JS
@@ -88,6 +86,20 @@ getThumbnailContent = (item) => {
 
 ...
 <PhotoSwipeGallery items={items} options={options} thumbnailContent={getThumbnailContent}/>
+```
+
+### UMD
+
+```html
+<link rel="stylesheet" type="text/css" href="path/to/react-photoswipe/dist/photoswipe.css">
+<script src="path/to/react-photoswipe/dist/react-photoswipe.js"></script>
+```
+
+```js
+...
+var PhotoSwipe = window.ReactPhotoswipe.PhotoSwipe;
+var PhotoSwipeGallery = window.ReactPhotoswipe.PhotoSwipeGallery;
+...
 ```
 
 ## Props
