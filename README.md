@@ -109,6 +109,8 @@ var PhotoSwipeGallery = window.ReactPhotoswipe.PhotoSwipeGallery;
 ...
 ```
 
+Example [here](http://codepen.io/vn38minhtran/pen/XmVdvW/)
+
 ## Props
 
 ### PhotoSwipe
