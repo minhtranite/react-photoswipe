@@ -95,6 +95,13 @@ gulp.task('photoswipe', function () {
     .pipe(gulp.dest('dist'));
 });
 
+gulp.task('photoswipe:copy', function () {
+  return gulp
+    .src(['node_modules/photoswipe/dist/default-skin/**/*', '!node_modules/photoswipe/dist/**/*.{scss,css,js}'])
+    .pipe(gulp.dest('lib'))
+    .pipe(gulp.dest('dist'));
+});
+
 gulp.task('copy', function () {
   return gulp
     .src(['src/**/*', '!src/**/*.{scss,js}'])
@@ -103,7 +110,7 @@ gulp.task('copy', function () {
 });
 
 gulp.task('build:lib', function (callback) {
-  runSequence('clean', 'lint', 'babel', 'umd', 'sass', 'photoswipe', 'copy', callback);
+  runSequence('clean', 'lint', 'babel', 'umd', 'sass', 'photoswipe', 'photoswipe:copy', 'copy', callback);
 });
 
 
