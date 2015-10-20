@@ -1,6 +1,6 @@
 {
   "name": "react-photoswipe",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "PhotoSwipe, PhotoSwipeGallery component for ReactJS base on PhotoSwipe.",
   "main": "lib/index.js",
   "scripts": {
