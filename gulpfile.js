@@ -8,6 +8,7 @@ var babel = require('gulp-babel');
 var sass = require('gulp-sass');
 var filter = require('gulp-filter');
 var autoprefixer = require('gulp-autoprefixer');
+var replace = require('gulp-replace');
 var minifyCss = require('gulp-minify-css');
 var runSequence = require('run-sequence');
 var webpackStatsHelper = require('./example/helper/webpack-stats-helper');
@@ -76,6 +77,7 @@ gulp.task('photoswipe', function () {
       'node_modules/photoswipe/dist/photoswipe.css',
       'node_modules/photoswipe/dist/default-skin/default-skin.css'
     ])
+    .pipe(replace(/url\s*\((\S+)\)/gi, 'url("./$1")'))
     .pipe(concat('photoswipe.css'))
     .pipe(autoprefixer({
       browsers: [
@@ -91,7 +93,10 @@ gulp.task('photoswipe', function () {
       ]
     }))
     .pipe(gulp.dest('lib'))
-    .pipe(minifyCss())
+    .pipe(minifyCss({
+      rebase: false,
+      compatibility: '+properties.urlQuotes'
+    }))
     .pipe(gulp.dest('dist'));
 });
 
