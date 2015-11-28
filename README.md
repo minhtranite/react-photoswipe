@@ -41,14 +41,18 @@ import {PhotoSwipe} from 'react-photoswipe';
 let isOpen = true;
 
 let items = [
-  ...,
+  {
+    src: 'http://lorempixel.com/1200/900/sports/1',
+    w: 1200,
+    h: 900,
+    title: 'Image 1'
+  },
   {
     src: 'http://lorempixel.com/1200/900/sports/2',
     w: 1200,
     h: 900,
     title: 'Image 2'
   }
-  ...
 ];
 
 let options = {
@@ -59,7 +63,6 @@ handleClose = () => {
   isOpen: false
 };
 
-...
 <PhotoSwipe isOpen={isOpen} items={items} options={options} onClose={handleClose}/>
 
 ```
@@ -70,7 +73,13 @@ handleClose = () => {
 import {PhotoSwipeGallery} from 'react-photoswipe';
 
 let items = [
-  ...,
+  {
+    src: 'http://lorempixel.com/1200/900/sports/1',
+    thumbnail: 'http://lorempixel.com/120/90/sports/1'
+    w: 1200,
+    h: 900,
+    title: 'Image 1'
+  },
   {
     src: 'http://lorempixel.com/1200/900/sports/2',
     thumbnail: 'http://lorempixel.com/120/90/sports/2'
@@ -78,7 +87,6 @@ let items = [
     h: 900,
     title: 'Image 2'
   }
-  ...
 ];
 
 let options = {
@@ -87,11 +95,10 @@ let options = {
 
 getThumbnailContent = (item) => {
   return (
-    <img src={item.thumbnail} with={120} height={90}/>
+    <img src={item.thumbnail} width={120} height={90}/>
   );
 }
 
-...
 <PhotoSwipeGallery items={items} options={options} thumbnailContent={getThumbnailContent}/>
 ```
 
@@ -103,10 +110,8 @@ getThumbnailContent = (item) => {
 ```
 
 ```js
-...
 var PhotoSwipe = window.ReactPhotoswipe.PhotoSwipe;
 var PhotoSwipeGallery = window.ReactPhotoswipe.PhotoSwipeGallery;
-...
 ```
 
 Example [here](http://codepen.io/vn38minhtran/pen/XmVdvW/)
@@ -128,7 +133,7 @@ Example [here](http://codepen.io/vn38minhtran/pen/XmVdvW/)
 |------|------|---------|----------|-------------|
 | items | array | [] | true | http://photoswipe.com/documentation/getting-started.html |
 | options | object | {} | false | http://photoswipe.com/documentation/options.html |
-| thumbnailContent | function | `<img src={item.src} with='100' height='100'/>` | false | Thumbnail content |
+| thumbnailContent | function | `<img src={item.src} width='100' height='100'/>` | false | Thumbnail content |
 
 ## Demo
 
