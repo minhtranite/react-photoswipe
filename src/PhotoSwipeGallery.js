@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import PhotoSwipe from './PhotoSwipe.js';
 
 class PhotoSwipeGallery extends React.Component {
@@ -12,7 +13,7 @@ class PhotoSwipeGallery extends React.Component {
     options: {},
     thumbnailContent: (item) => {
       return (
-        <img src={item.src} with='100' height='100'/>
+        <img src={item.src} width='100' height='100'/>
       );
     }
   };
@@ -28,7 +29,7 @@ class PhotoSwipeGallery extends React.Component {
       let options = this.state.options;
       options.index = itemIndex;
       options.getThumbBoundsFn = (index) => {
-        let thumbnail = React.findDOMNode(this.refs['thumbnail' + index]);
+        let thumbnail = ReactDOM.findDOMNode(this.refs['thumbnail' + index]);
         let img = thumbnail.getElementsByTagName('img')[0];
         let pageYScroll = window.pageYOffset || document.documentElement.scrollTop;
         let rect = img.getBoundingClientRect();

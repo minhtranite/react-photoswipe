@@ -1,6 +1,7 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import PhotoSwipeFn from 'photoswipe';
-import PhotoSwipeUIDefault from 'photoswipe/dist/photoswipe-ui-default.js';
+import PhotoSwipeUIDefault from 'photoswipe/dist/photoswipe-ui-default';
 
 class PhotoSwipe extends React.Component {
   static propTypes = {
@@ -48,7 +49,7 @@ class PhotoSwipe extends React.Component {
   };
 
   openPhotoSwipe = (items, options) => {
-    let pswpElement = React.findDOMNode(this);
+    let pswpElement = ReactDOM.findDOMNode(this);
     this.photoSwipe = new PhotoSwipeFn(pswpElement, PhotoSwipeUIDefault, items, options);
     this.photoSwipe.listen('close', this.handleClose);
     this.setState({
@@ -71,43 +72,42 @@ class PhotoSwipe extends React.Component {
   render() {
     return (
       <div className='pswp' tabIndex='-1' role='dialog' aria-hidden='true'>
-        <div className='pswp__bg'></div>
+        <div className='pswp__bg'/>
         <div className='pswp__scroll-wrap'>
           <div className='pswp__container'>
-            <div className='pswp__item'></div>
-            <div className='pswp__item'></div>
-            <div className='pswp__item'></div>
+            <div className='pswp__item'/>
+            <div className='pswp__item'/>
+            <div className='pswp__item'/>
           </div>
           <div className='pswp__ui pswp__ui--hidden'>
             <div className='pswp__top-bar'>
-              <div className='pswp__counter'></div>
+              <div className='pswp__counter'/>
               <button className='pswp__button pswp__button--close'
-                title='Close (Esc)'></button>
+                title='Close (Esc)'/>
               <button className='pswp__button pswp__button--share'
-                title='Share'></button>
+                title='Share'/>
               <button className='pswp__button pswp__button--fs'
-                title='Toggle fullscreen'></button>
+                title='Toggle fullscreen'/>
               <button className='pswp__button pswp__button--zoom'
-                title='Zoom in/out'></button>
+                title='Zoom in/out'/>
               <div className='pswp__preloader'>
                 <div className='pswp__preloader__icn'>
                   <div className='pswp__preloader__cut'>
-                    <div className='pswp__preloader__donut'></div>
+                    <div className='pswp__preloader__donut'/>
                   </div>
                 </div>
               </div>
             </div>
             <div
               className='pswp__share-modal pswp__share-modal--hidden pswp__single-tap'>
-              <div className='pswp__share-tooltip'></div>
+              <div className='pswp__share-tooltip'/>
             </div>
             <button className='pswp__button pswp__button--arrow--left'
-              title='Previous (arrow left)'>
-            </button>
+              title='Previous (arrow left)'/>
             <button className='pswp__button pswp__button--arrow--right'
-              title='Next (arrow right)'></button>
+              title='Next (arrow right)'/>
             <div className='pswp__caption'>
-              <div className='pswp__caption__center'></div>
+              <div className='pswp__caption__center'/>
             </div>
           </div>
         </div>
