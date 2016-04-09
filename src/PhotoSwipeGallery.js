@@ -1,12 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PhotoSwipe from './PhotoSwipe.js';
+import events from './events';
+import classnames from 'classnames';
 
 class PhotoSwipeGallery extends React.Component {
   static propTypes = {
     items: React.PropTypes.array.isRequired,
     options: React.PropTypes.object,
-    thumbnailContent: React.PropTypes.func
+    thumbnailContent: React.PropTypes.func,
+    className: React.PropTypes.string
   };
 
   static defaultProps = {
@@ -26,7 +29,7 @@ class PhotoSwipeGallery extends React.Component {
   showPhotoSwipe = (itemIndex) => {
     return (e) => {
       e.preventDefault();
-      let options = this.state.options;
+      let {options} = this.state;
       options.index = itemIndex;
       options.getThumbBoundsFn = (index) => {
         let thumbnail = ReactDOM.findDOMNode(this.refs['thumbnail' + index]);
@@ -49,21 +52,38 @@ class PhotoSwipeGallery extends React.Component {
   };
 
   render() {
+    let {className, items, thumbnailContent, ...other} = this.props;
+    let {isOpen, options} = this.state;
+    className = classnames(['pswp-gallery', className]).trim();
+    let otherProps = {};
+    let eventProps = {};
+    for (let propName in other) {
+      if (other.hasOwnProperty(propName)) {
+        if (events.indexOf(propName) === -1) {
+          otherProps[propName] = other[propName];
+        } else {
+          eventProps[propName] = other[propName];
+        }
+      }
+    }
     return (
-      <div className='pswp-gallery'>
+      <div {...otherProps} className={className}>
         <div className='pswp-thumbnails'>
-          {this.props.items.map((item, index) => {
+          {items.map((item, index) => {
             return (
               <div key={index} ref={'thumbnail' + index}
                 className='pswp-thumbnail'
                 onClick={this.showPhotoSwipe(index)}>
-                {this.props.thumbnailContent(item)}
+                {thumbnailContent(item)}
               </div>
             );
           })}
         </div>
-        <PhotoSwipe isOpen={this.state.isOpen} items={this.props.items}
-          options={this.state.options} onClose={this.handleClose}/>
+        <PhotoSwipe {...eventProps}
+          isOpen={isOpen}
+          items={items}
+          options={options}
+          onClose={this.handleClose}/>
       </div>
     );
   }

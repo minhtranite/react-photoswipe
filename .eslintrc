@@ -27,7 +27,7 @@
     "quotes": [2, "single", "avoid-escape"],
     "semi": 2,
     "no-underscore-dangle": 0,
-    "no-unused-vars": [2, {"args": "all"}],
+    "no-unused-vars": [2, {"args": "after-used"}],
     "camelcase": [2, {"properties": "never"}],
     "new-cap": 0,
     "accessor-pairs": 0,

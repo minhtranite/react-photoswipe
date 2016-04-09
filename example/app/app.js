@@ -84,8 +84,16 @@ class App extends React.Component {
 
   getThumbnailContent = (item) => {
     return (
-      <img src={item.thumbnail} with={120} height={90}/>
+      <img src={item.thumbnail} width={120} height={90}/>
     );
+  };
+
+  handleBeforeChange = (instance, change) => {
+    console.log(change);
+  };
+
+  handleImageLoadComplete = (instance, index, item) => {
+    console.log(index, item);
   };
 
   render() {
@@ -99,8 +107,11 @@ class App extends React.Component {
             <button className='btn btn-primary' onClick={this.openPhotoSwipe}>
               Click me
             </button>
-            <PhotoSwipe isOpen={this.state.isOpen} items={this.state.items}
+            <PhotoSwipe id='my-photoswipe'
+              isOpen={this.state.isOpen}
+              items={this.state.items}
               options={this.state.options}
+              beforeChange={this.handleBeforeChange}
               onClose={this.handleClose}/>
             <hr/>
             <h2>PhotoSwipeGallery</h2>

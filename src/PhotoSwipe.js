@@ -1,14 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import PhotoSwipeFn from 'photoswipe';
-import PhotoSwipeUIDefault from 'photoswipe/dist/photoswipe-ui-default';
+import Photoswipe from 'photoswipe';
+import PhotoswipeUIDefault from 'photoswipe/dist/photoswipe-ui-default';
+import classnames from 'classnames';
+import events from './events';
 
 class PhotoSwipe extends React.Component {
   static propTypes = {
     isOpen: React.PropTypes.bool.isRequired,
     items: React.PropTypes.array.isRequired,
     options: React.PropTypes.object,
-    onClose: React.PropTypes.func
+    onClose: React.PropTypes.func,
+    className: React.PropTypes.string
   };
   static defaultProps = {
     items: [],
@@ -20,38 +23,49 @@ class PhotoSwipe extends React.Component {
   };
 
   componentDidMount = () => {
-    if (this.props.isOpen) {
-      this.openPhotoSwipe(this.props.items, this.props.options);
+    let {isOpen} = this.state;
+    if (isOpen) {
+      this.openPhotoSwipe(this.props);
     }
   };
 
   componentWillReceiveProps = (nextProps) => {
+    let {isOpen} = this.state;
     if (nextProps.isOpen) {
-      if (!this.state.isOpen) {
-        this.openPhotoSwipe(nextProps.items, nextProps.options);
+      if (!isOpen) {
+        this.openPhotoSwipe(nextProps);
       } else {
-        this.photoSwipe.items.length = 0;
-        nextProps.items.forEach((item) => {
-          this.photoSwipe.items.push(item);
-        });
-        this.photoSwipe.invalidateCurrItems();
-        this.photoSwipe.updateSize(true);
+        this.updateItems(nextProps.items);
       }
-    } else if (this.state.isOpen) {
-      this.photoSwipe.close();
+    } else if (isOpen) {
+      this.closePhotoSwipe();
     }
   };
 
   componentWillUnmount = () => {
-    if (this.photoSwipe) {
-      this.photoSwipe.close();
-    }
+    this.closePhotoSwipe();
   };
 
-  openPhotoSwipe = (items, options) => {
+  openPhotoSwipe = (props) => {
+    let {items, options, ...other} = props;
     let pswpElement = ReactDOM.findDOMNode(this);
-    this.photoSwipe = new PhotoSwipeFn(pswpElement, PhotoSwipeUIDefault, items, options);
-    this.photoSwipe.listen('close', this.handleClose);
+    this.photoSwipe = new Photoswipe(pswpElement, PhotoswipeUIDefault, items, options);
+    events.forEach(event => {
+      let callback = props[event];
+      if (callback || event === 'destroy') {
+        let self = this;
+        this.photoSwipe.listen(event, function () {
+          if (callback) {
+            let args = (arguments.length === 1 ? [arguments[0]] : Array.apply(null, arguments));
+            args.unshift(this);
+            callback(...args);
+          }
+          if (event === 'destroy') {
+            self.handleClose();
+          }
+        });
+      }
+    });
     this.setState({
       isOpen: true
     }, () => {
@@ -59,19 +73,48 @@ class PhotoSwipe extends React.Component {
     });
   };
 
+  updateItems = (items = []) => {
+    this.photoSwipe.items.length = 0;
+    items.forEach((item) => {
+      this.photoSwipe.items.push(item);
+    });
+    this.photoSwipe.invalidateCurrItems();
+    this.photoSwipe.updateSize(true);
+  };
+
+  closePhotoSwipe = () => {
+    if (!this.photoSwipe) {
+      return;
+    }
+    this.photoSwipe.close();
+  };
+
   handleClose = () => {
+    let {onClose} = this.props;
     this.setState({
       isOpen: false
     }, () => {
-      if (this.props.onClose) {
-        this.props.onClose();
+      if (onClose) {
+        onClose();
       }
     });
   };
 
   render() {
+    let {isOpen, items, options, onClose, className, ...other} = this.props;
+    className = classnames(['pswp', className]).trim();
+    let otherProps = {};
+    for (let propName in other) {
+      if (other.hasOwnProperty(propName) && events.indexOf(propName) === -1) {
+        otherProps[propName] = other[propName];
+      }
+    }
     return (
-      <div className='pswp' tabIndex='-1' role='dialog' aria-hidden='true'>
+      <div {...otherProps}
+        className={className}
+        tabIndex='-1'
+        role='dialog'
+        aria-hidden='true'>
         <div className='pswp__bg'/>
         <div className='pswp__scroll-wrap'>
           <div className='pswp__container'>
