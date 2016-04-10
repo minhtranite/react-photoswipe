@@ -134,23 +134,23 @@ imageLoadComplete(instance, index, item);
 | items | array | [] | true | http://photoswipe.com/documentation/getting-started.html |
 | options | object | {} | false | http://photoswipe.com/documentation/options.html |
 | onClose | function |  | false | Callback after PhotoSwipe close |
-| beforeChange | func |  | false | Photoswipe event listener |
-| afterChange | func |  | false | Photoswipe event listener |
-| imageLoadComplete | func |  | false | Photoswipe event listener |
-| resize | func |  | false | Photoswipe event listener |
-| gettingData | func |  | false | Photoswipe event listener |
-| mouseUsed | func |  | false | Photoswipe event listener |
-| initialZoomIn | func |  | false | Photoswipe event listener |
-| initialZoomInEnd | func |  | false | Photoswipe event listener |
-| initialZoomOut | func |  | false | Photoswipe event listener |
-| initialZoomOutEnd | func |  | false | Photoswipe event listener |
-| parseVerticalMargin | func |  | false | Photoswipe event listener |
-| close | func |  | false | Photoswipe event listener |
-| unbindEvents | func |  | false | Photoswipe event listener |
-| destroy | func |  | false | Photoswipe event listener |
-| updateScrollOffset | func |  | false | Photoswipe event listener |
-| preventDragEvent | func |  | false | Photoswipe event listener |
-| shareLinkClick | func |  | false | Photoswipe event listener |
+| beforeChange | function |  | false | Photoswipe event listener |
+| afterChange | function |  | false | Photoswipe event listener |
+| imageLoadComplete | function |  | false | Photoswipe event listener |
+| resize | function |  | false | Photoswipe event listener |
+| gettingData | function |  | false | Photoswipe event listener |
+| mouseUsed | function |  | false | Photoswipe event listener |
+| initialZoomIn | function |  | false | Photoswipe event listener |
+| initialZoomInEnd | function |  | false | Photoswipe event listener |
+| initialZoomOut | function |  | false | Photoswipe event listener |
+| initialZoomOutEnd | function |  | false | Photoswipe event listener |
+| parseVerticalMargin | function |  | false | Photoswipe event listener |
+| close | function |  | false | Photoswipe event listener |
+| unbindEvents | function |  | false | Photoswipe event listener |
+| destroy | function |  | false | Photoswipe event listener |
+| updateScrollOffset | function |  | false | Photoswipe event listener |
+| preventDragEvent | function |  | false | Photoswipe event listener |
+| shareLinkClick | function |  | false | Photoswipe event listener |
 
 ### PhotoSwipeGallery
 
@@ -159,23 +159,23 @@ imageLoadComplete(instance, index, item);
 | items | array | [] | true | http://photoswipe.com/documentation/getting-started.html |
 | options | object | {} | false | http://photoswipe.com/documentation/options.html |
 | thumbnailContent | function | `<img src={item.src} width='100' height='100'/>` | false | Thumbnail content |
-| beforeChange | func |  | false | Photoswipe event listener |
-| afterChange | func |  | false | Photoswipe event listener |
-| imageLoadComplete | func |  | false | Photoswipe event listener |
-| resize | func |  | false | Photoswipe event listener |
-| gettingData | func |  | false | Photoswipe event listener |
-| mouseUsed | func |  | false | Photoswipe event listener |
-| initialZoomIn | func |  | false | Photoswipe event listener |
-| initialZoomInEnd | func |  | false | Photoswipe event listener |
-| initialZoomOut | func |  | false | Photoswipe event listener |
-| initialZoomOutEnd | func |  | false | Photoswipe event listener |
-| parseVerticalMargin | func |  | false | Photoswipe event listener |
-| close | func |  | false | Photoswipe event listener |
-| unbindEvents | func |  | false | Photoswipe event listener |
-| destroy | func |  | false | Photoswipe event listener |
-| updateScrollOffset | func |  | false | Photoswipe event listener |
-| preventDragEvent | func |  | false | Photoswipe event listener |
-| shareLinkClick | func |  | false | Photoswipe event listener |
+| beforeChange | function |  | false | Photoswipe event listener |
+| afterChange | function |  | false | Photoswipe event listener |
+| imageLoadComplete | function |  | false | Photoswipe event listener |
+| resize | function |  | false | Photoswipe event listener |
+| gettingData | function |  | false | Photoswipe event listener |
+| mouseUsed | function |  | false | Photoswipe event listener |
+| initialZoomIn | function |  | false | Photoswipe event listener |
+| initialZoomInEnd | function |  | false | Photoswipe event listener |
+| initialZoomOut | function |  | false | Photoswipe event listener |
+| initialZoomOutEnd | function |  | false | Photoswipe event listener |
+| parseVerticalMargin | function |  | false | Photoswipe event listener |
+| close | function |  | false | Photoswipe event listener |
+| unbindEvents | function |  | false | Photoswipe event listener |
+| destroy | function |  | false | Photoswipe event listener |
+| updateScrollOffset | function |  | false | Photoswipe event listener |
+| preventDragEvent | function |  | false | Photoswipe event listener |
+| shareLinkClick | function |  | false | Photoswipe event listener |
 
 ## Demo
 
