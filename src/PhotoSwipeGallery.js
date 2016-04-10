@@ -16,7 +16,7 @@ class PhotoSwipeGallery extends React.Component {
     options: {},
     thumbnailContent: (item) => {
       return (
-        <img src={item.src} width='100' height='100'/>
+        <img src={item.src} width="100" height="100"/>
       );
     }
   };
@@ -68,11 +68,11 @@ class PhotoSwipeGallery extends React.Component {
     }
     return (
       <div {...otherProps} className={className}>
-        <div className='pswp-thumbnails'>
+        <div className="pswp-thumbnails">
           {items.map((item, index) => {
             return (
               <div key={index} ref={'thumbnail' + index}
-                className='pswp-thumbnail'
+                className="pswp-thumbnail"
                 onClick={this.showPhotoSwipe(index)}>
                 {thumbnailContent(item)}
               </div>

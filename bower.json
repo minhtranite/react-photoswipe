@@ -1,6 +1,6 @@
 {
   "name": "react-photoswipe",
-  "version": "0.5.1",
+  "version": "1.0.0",
   "description": "PhotoSwipe, PhotoSwipeGallery component for ReactJS base on PhotoSwipe.",
   "main": ["dist/photoswipe.css", "dist/react-photoswipe.js"],
   "keywords": [
@@ -20,7 +20,5 @@
     "tests"
   ],
   "dependencies": {},
-  "devDependencies": {
-    "bootstrap-customize": "~3.3.4"
-  }
+  "devDependencies": {}
 }

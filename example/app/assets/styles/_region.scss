@@ -1,0 +1,32 @@
+/* Header
+   ========================================================================== */
+.navbar {
+  border-radius: 0;
+}
+
+/* Footer
+   ========================================================================== */
+html,
+body,
+#app {
+  height: 100%;
+}
+
+.layout-page {
+  position: relative;
+  min-height: 100%;
+  padding-bottom: 60px;
+}
+
+.layout-main {
+  margin-bottom: 30px;
+}
+
+.layout-footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  background-color: #F8F8F8;
+  padding: 20px 0;
+}

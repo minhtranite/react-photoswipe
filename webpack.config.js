@@ -1,38 +1,12 @@
-var webpack = require('webpack');
-var path = require('path');
-var pkg = require('./package.json');
-var camelCase = require('camelcase');
+import webpack from 'webpack';
+import pkg from './package.json';
+import camelCase from 'camelcase';
 
-function capitalizeFirstLetter(string) {
+const capitalizeFirstLetter = (string) => {
   return string.charAt(0).toUpperCase() + string.slice(1);
-}
+};
 
-var plugins = [
-  new webpack.DefinePlugin({
-    'process.env': {
-      NODE_ENV: JSON.stringify(process.env.NODE_ENV)
-    }
-  })
-];
-
-if (process.env.NODE_ENV === 'production') {
-  plugins.push(new webpack.optimize.UglifyJsPlugin({
-    compressor: {
-      warnings: false
-    }
-  }));
-  plugins.push(new webpack.optimize.DedupePlugin());
-}
-
-var loaders = [
-  {
-    test: /\.(js|jsx)$/,
-    exclude: /(node_modules)/,
-    loader: 'babel-loader'
-  }
-];
-
-module.exports = {
+const webpackConfig = {
   output: {
     filename: pkg.name + '.js',
     library: capitalizeFirstLetter(camelCase(pkg.name)),
@@ -53,10 +27,35 @@ module.exports = {
     }
   },
   module: {
-    loaders: loaders
+    loaders: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /(node_modules)/,
+        loader: 'babel-loader'
+      }
+    ]
   },
   resolve: {
+    modulesDirectories: ['node_modules', 'bower_components'],
     extensions: ['', '.jsx', '.js']
   },
-  plugins: plugins
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV)
+      }
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      sourceMap: false,
+      compress: {
+        warnings: false
+      },
+      output: {
+        comments: false
+      }
+    }),
+    new webpack.optimize.DedupePlugin()
+  ]
 };
+
+export default webpackConfig;
