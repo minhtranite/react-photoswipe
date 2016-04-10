@@ -16,8 +16,8 @@
     "gallery"
   ],
   "peerDependencies": {
-    "react": "0.14.x",
-    "react-dom": "0.14.x"
+    "react": "^0.14 || ^15.0.0",
+    "react-dom": "^0.14 || ^15.0.0"
   },
   "dependencies": {
     "classnames": "^2.2.3",
