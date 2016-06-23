@@ -31,13 +31,13 @@ class PhotoSwipeGallery extends React.Component {
       e.preventDefault();
       let {options} = this.state;
       options.index = itemIndex;
-      options.getThumbBoundsFn = (index) => {
+      options.getThumbBoundsFn = options.getThumbBoundsFn || ((index) => {
         let thumbnail = ReactDOM.findDOMNode(this.refs['thumbnail' + index]);
         let img = thumbnail.getElementsByTagName('img')[0];
         let pageYScroll = window.pageYOffset || document.documentElement.scrollTop;
         let rect = img.getBoundingClientRect();
         return {x: rect.left, y: rect.top + pageYScroll, w: rect.width};
-      };
+      });
       this.setState({
         isOpen: true,
         options: options
