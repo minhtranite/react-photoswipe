@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PhotoSwipe from './PhotoSwipe.js';
+import pick from 'lodash.pick';
 import events from './events';
 import classnames from 'classnames';
 
@@ -9,6 +10,7 @@ class PhotoSwipeGallery extends React.Component {
     items: React.PropTypes.array.isRequired,
     options: React.PropTypes.object,
     thumbnailContent: React.PropTypes.func,
+    id: React.PropTypes.string,
     className: React.PropTypes.string
   };
 
@@ -52,22 +54,12 @@ class PhotoSwipeGallery extends React.Component {
   };
 
   render() {
-    let {className, items, thumbnailContent, ...other} = this.props;
-    let {isOpen, options} = this.state;
+    let {id, className, items, thumbnailContent, ...other} = this.props;
     className = classnames(['pswp-gallery', className]).trim();
-    let otherProps = {};
-    let eventProps = {};
-    for (let propName in other) {
-      if (other.hasOwnProperty(propName)) {
-        if (events.indexOf(propName) === -1) {
-          otherProps[propName] = other[propName];
-        } else {
-          eventProps[propName] = other[propName];
-        }
-      }
-    }
+    let eventProps = pick(other, events);
+    let {isOpen, options} = this.state;
     return (
-      <div {...otherProps} className={className}>
+      <div id={id} className={className}>
         <div className="pswp-thumbnails">
           {items.map((item, index) => {
             return (

@@ -11,6 +11,7 @@ class PhotoSwipe extends React.Component {
     items: React.PropTypes.array.isRequired,
     options: React.PropTypes.object,
     onClose: React.PropTypes.func,
+    id: React.PropTypes.string,
     className: React.PropTypes.string
   };
   static defaultProps = {
@@ -101,16 +102,10 @@ class PhotoSwipe extends React.Component {
   };
 
   render() {
-    let {isOpen, items, options, onClose, className, ...other} = this.props;
+    let {id, className} = this.props;
     className = classnames(['pswp', className]).trim();
-    let otherProps = {};
-    for (let propName in other) {
-      if (other.hasOwnProperty(propName) && events.indexOf(propName) === -1) {
-        otherProps[propName] = other[propName];
-      }
-    }
     return (
-      <div {...otherProps}
+      <div id={id}
         className={className}
         tabIndex="-1"
         role="dialog"
