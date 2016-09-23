@@ -183,4 +183,4 @@ imageLoadComplete(instance, index, item);
 
 ## Demo
 
-View [demo](http://vn38minhtran.github.io/react-photoswipe) or example folder.
+View [demo](http://minhtranite.github.io/react-photoswipe) or example folder.
