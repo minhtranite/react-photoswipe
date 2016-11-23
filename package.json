@@ -2,7 +2,7 @@
   "name": "react-photoswipe",
   "version": "1.2.0",
   "description": "PhotoSwipe, PhotoSwipeGallery component for ReactJS base on PhotoSwipe.",
-  "main": "lib/index.js",
+  "main": "dist/react-photoswipe.js",
   "scripts": {
     "start": "NODE_ENV=development gulp start",
     "build": "NODE_ENV=production gulp build"
