@@ -10,8 +10,9 @@ class PhotoSwipeGallery extends React.Component {
     items: React.PropTypes.array.isRequired,
     options: React.PropTypes.object,
     thumbnailContent: React.PropTypes.func,
+    isOpen: React.PropTypes.bool,
     id: React.PropTypes.string,
-    className: React.PropTypes.string
+    className: React.PropTypes.string,
   };
 
   static defaultProps = {
@@ -20,11 +21,12 @@ class PhotoSwipeGallery extends React.Component {
       return (
         <img src={item.src} width="100" height="100"/>
       );
-    }
+    },
+    isOpen: false
   };
 
   state = {
-    isOpen: false,
+    isOpen: this.props.isOpen,
     options: this.props.options
   };
 
