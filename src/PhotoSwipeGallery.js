@@ -11,6 +11,7 @@ class PhotoSwipeGallery extends React.Component {
     options: React.PropTypes.object,
     thumbnailContent: React.PropTypes.func,
     isOpen: React.PropTypes.bool,
+    onClose: React.PropTypes.func,
     id: React.PropTypes.string,
     className: React.PropTypes.string,
   };
@@ -28,6 +29,17 @@ class PhotoSwipeGallery extends React.Component {
   state = {
     isOpen: this.props.isOpen,
     options: this.props.options
+  };
+
+  componentWillReceiveProps = (nextProps) => {
+    let {isOpen} = this.state;
+    if (nextProps.isOpen) {
+      if (!isOpen) {
+        this.setState({isOpen: true});
+      }
+    } else if (isOpen) {
+      this.setState({isOpen: false});
+    }
   };
 
   showPhotoSwipe = (itemIndex) => {
@@ -53,9 +65,12 @@ class PhotoSwipeGallery extends React.Component {
     this.setState({
       isOpen: false
     });
+    this.props.onClose();
   };
 
   render() {
+    console.log('PhotoSwipeGalleryProps', this.props);
+    console.log('PhotoSwipeGalleryState', this.state);
     let {id, className, items, thumbnailContent, ...other} = this.props;
     className = classnames(['pswp-gallery', className]).trim();
     let eventProps = pick(other, events);
