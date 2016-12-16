@@ -69,8 +69,6 @@ class PhotoSwipeGallery extends React.Component {
   };
 
   render() {
-    console.log('PhotoSwipeGalleryProps', this.props);
-    console.log('PhotoSwipeGalleryState', this.state);
     let {id, className, items, thumbnailContent, ...other} = this.props;
     className = classnames(['pswp-gallery', className]).trim();
     let eventProps = pick(other, events);
