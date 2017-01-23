@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import PhotoSwipe from './PhotoSwipe.js';
+import PhotoSwipe from './PhotoSwipeComponent.js';
 import pick from 'lodash.pick';
 import events from './events';
 import classnames from 'classnames';
