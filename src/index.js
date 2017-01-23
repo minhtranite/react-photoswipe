@@ -1,5 +1,5 @@
-import PhotoSwipe from './PhotoSwipe.js';
-import PhotoSwipeGallery from './PhotoSwipeGallery.js';
+import PhotoSwipe from './PhotoSwipeComponent.js';
+import PhotoSwipeGallery from './PhotoSwipeGalleryComponent.js';
 
 module.exports = {
   PhotoSwipe: PhotoSwipe,
