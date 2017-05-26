@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
 import PhotoSwipe from './PhotoSwipe.js';
 import pick from 'lodash.pick';
 import events from './events';
@@ -7,11 +8,11 @@ import classnames from 'classnames';
 
 class PhotoSwipeGallery extends React.Component {
   static propTypes = {
-    items: React.PropTypes.array.isRequired,
-    options: React.PropTypes.object,
-    thumbnailContent: React.PropTypes.func,
-    id: React.PropTypes.string,
-    className: React.PropTypes.string
+    items: PropTypes.array.isRequired,
+    options: PropTypes.object,
+    thumbnailContent: PropTypes.func,
+    id: PropTypes.string,
+    className: PropTypes.string
   };
 
   static defaultProps = {
