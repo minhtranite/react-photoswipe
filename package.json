@@ -73,7 +73,10 @@
     "webpack-dev-middleware": "^1.2.0",
     "webpack-hot-middleware": "^2.5.0",
     "webpack-manifest-plugin": "^1.0.0",
-    "webpack-stream": "^3.0.1"
+    "webpack-stream": "^3.0.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-1": "^6.24.1"
   },
   "repository": {
     "type": "git",

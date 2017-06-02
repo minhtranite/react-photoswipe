@@ -64,6 +64,8 @@
   height: 100%;
   background: #000;
   opacity: 0;
+  -webkit-transform: translateZ(0);
+          transform: translateZ(0);
   -webkit-backface-visibility: hidden;
   will-change: opacity; }
 
@@ -207,8 +209,7 @@
   opacity: 0.75;
   transition: opacity 0.2s;
   box-shadow: none; }
-  .pswp__button:focus,
-  .pswp__button:hover {
+  .pswp__button:focus, .pswp__button:hover {
     opacity: 1; }
   .pswp__button:active {
     outline: none;

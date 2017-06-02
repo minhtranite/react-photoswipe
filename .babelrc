@@ -1,6 +1,9 @@
 {
-  "stage": 0,
-  "optional": [],
+  "presets": [
+    "es2015",
+    "stage-1",
+    "react"
+  ],
   "env": {
     "development": {
       "plugins": ["react-transform"],
