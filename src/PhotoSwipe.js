@@ -4,15 +4,16 @@ import Photoswipe from 'photoswipe';
 import PhotoswipeUIDefault from 'photoswipe/dist/photoswipe-ui-default';
 import classnames from 'classnames';
 import events from './events';
+import PropTypes from 'prop-types';
 
 class PhotoSwipe extends React.Component {
   static propTypes = {
-    isOpen: React.PropTypes.bool.isRequired,
-    items: React.PropTypes.array.isRequired,
-    options: React.PropTypes.object,
-    onClose: React.PropTypes.func,
-    id: React.PropTypes.string,
-    className: React.PropTypes.string
+    isOpen: PropTypes.bool.isRequired,
+    items: PropTypes.array.isRequired,
+    options: PropTypes.object,
+    onClose: PropTypes.func,
+    id: PropTypes.string,
+    className: PropTypes.string
   };
   static defaultProps = {
     items: [],
