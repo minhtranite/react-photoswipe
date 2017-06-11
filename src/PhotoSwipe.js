@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ReactDOM from 'react-dom';
 import Photoswipe from 'photoswipe';
 import PhotoswipeUIDefault from 'photoswipe/dist/photoswipe-ui-default';
 import classnames from 'classnames';
@@ -15,9 +14,13 @@ class PhotoSwipe extends React.Component {
     id: PropTypes.string,
     className: PropTypes.string
   };
+
   static defaultProps = {
-    items: [],
-    options: {}
+    options: {},
+    onClose: () => {
+    },
+    id: '',
+    className: ''
   };
 
   state = {
@@ -25,14 +28,14 @@ class PhotoSwipe extends React.Component {
   };
 
   componentDidMount = () => {
-    let {isOpen} = this.state;
+    const { isOpen } = this.state;
     if (isOpen) {
       this.openPhotoSwipe(this.props);
     }
   };
 
   componentWillReceiveProps = (nextProps) => {
-    let {isOpen} = this.state;
+    const { isOpen } = this.state;
     if (nextProps.isOpen) {
       if (!isOpen) {
         this.openPhotoSwipe(nextProps);
@@ -49,16 +52,15 @@ class PhotoSwipe extends React.Component {
   };
 
   openPhotoSwipe = (props) => {
-    let {items, options, ...other} = props;
-    let pswpElement = ReactDOM.findDOMNode(this);
+    const { items, options } = props;
+    const pswpElement = this.pswpElement;
     this.photoSwipe = new Photoswipe(pswpElement, PhotoswipeUIDefault, items, options);
-    events.forEach(event => {
-      let callback = props[event];
+    events.forEach((event) => {
+      const callback = props[event];
       if (callback || event === 'destroy') {
-        let self = this;
-        this.photoSwipe.listen(event, function () {
+        const self = this;
+        this.photoSwipe.listen(event, function (...args) {
           if (callback) {
-            let args = (arguments.length === 1 ? [arguments[0]] : Array.apply(null, arguments));
             args.unshift(this);
             callback(...args);
           }
@@ -92,7 +94,7 @@ class PhotoSwipe extends React.Component {
   };
 
   handleClose = () => {
-    let {onClose} = this.props;
+    const { onClose } = this.props;
     this.setState({
       isOpen: false
     }, () => {
@@ -103,14 +105,20 @@ class PhotoSwipe extends React.Component {
   };
 
   render() {
-    let {id, className} = this.props;
+    const { id } = this.props;
+    let { className } = this.props;
     className = classnames(['pswp', className]).trim();
     return (
-      <div id={id}
+      <div
+        id={id}
         className={className}
         tabIndex="-1"
         role="dialog"
-        aria-hidden="true">
+        aria-hidden="true"
+        ref={(node) => {
+          this.pswpElement = node;
+        }}
+      >
         <div className="pswp__bg"/>
         <div className="pswp__scroll-wrap">
           <div className="pswp__container">
@@ -121,14 +129,19 @@ class PhotoSwipe extends React.Component {
           <div className="pswp__ui pswp__ui--hidden">
             <div className="pswp__top-bar">
               <div className="pswp__counter"/>
-              <button className="pswp__button pswp__button--close"
-                title="Close (Esc)"/>
-              <button className="pswp__button pswp__button--share"
-                title="Share"/>
-              <button className="pswp__button pswp__button--fs"
-                title="Toggle fullscreen"/>
-              <button className="pswp__button pswp__button--zoom"
-                title="Zoom in/out"/>
+              <button
+                className="pswp__button pswp__button--close"
+                title="Close (Esc)"
+              />
+              <button
+                className="pswp__button pswp__button--share"
+                title="Share"
+              />
+              <button
+                className="pswp__button pswp__button--fs"
+                title="Toggle fullscreen"
+              />
+              <button className="pswp__button pswp__button--zoom" title="Zoom in/out"/>
               <div className="pswp__preloader">
                 <div className="pswp__preloader__icn">
                   <div className="pswp__preloader__cut">
@@ -137,14 +150,17 @@ class PhotoSwipe extends React.Component {
                 </div>
               </div>
             </div>
-            <div
-              className="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+            <div className="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
               <div className="pswp__share-tooltip"/>
             </div>
-            <button className="pswp__button pswp__button--arrow--left"
-              title="Previous (arrow left)"/>
-            <button className="pswp__button pswp__button--arrow--right"
-              title="Next (arrow right)"/>
+            <button
+              className="pswp__button pswp__button--arrow--left"
+              title="Previous (arrow left)"
+            />
+            <button
+              className="pswp__button pswp__button--arrow--right"
+              title="Next (arrow right)"
+            />
             <div className="pswp__caption">
               <div className="pswp__caption__center"/>
             </div>

@@ -1,0 +1,16 @@
+/* Page
+   ========================================================================== */
+html,
+body,
+#app {
+  height: 100%;
+}
+
+.page {
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+  &__wrapper {
+    flex-grow: 1;
+  }
+}
