@@ -11,7 +11,9 @@ class PhotoSwipeGallery extends React.Component {
     options: PropTypes.object,
     thumbnailContent: PropTypes.func,
     id: PropTypes.string,
-    className: PropTypes.string
+    className: PropTypes.string,
+    isOpen: PropTypes.bool,
+    onClose: PropTypes.func
   };
 
   static defaultProps = {
@@ -20,12 +22,26 @@ class PhotoSwipeGallery extends React.Component {
       <img src={item.src} width="100" height="100" alt=""/>
     ),
     id: '',
-    className: ''
+    className: '',
+    isOpen: false,
+    onClose: () => {
+    }
   };
 
   state = {
-    isOpen: false,
+    isOpen: this.props.isOpen,
     options: this.props.options
+  };
+
+  componentWillReceiveProps = (nextProps) => {
+    const { isOpen } = this.state;
+    if (nextProps.isOpen) {
+      if (!isOpen) {
+        this.setState({ isOpen: true });
+      }
+    } else if (isOpen) {
+      this.setState({ isOpen: false });
+    }
   };
 
   showPhotoSwipe = itemIndex => (e) => {
@@ -50,6 +66,7 @@ class PhotoSwipeGallery extends React.Component {
     this.setState({
       isOpen: false
     });
+    this.props.onClose();
   };
 
   render() {

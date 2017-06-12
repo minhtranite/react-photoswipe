@@ -24,7 +24,7 @@ class PhotoSwipe extends React.Component {
   };
 
   state = {
-    isOpen: false
+    isOpen: this.props.isOpen
   };
 
   componentDidMount = () => {

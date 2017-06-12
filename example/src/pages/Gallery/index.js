@@ -44,8 +44,21 @@ class GalleryPage extends React.Component {
     <img src={item.thumbnail} width={120} height={90} alt=""/>
   );
 
+  openPhotoSwipe = (e) => {
+    e.preventDefault();
+    this.setState({
+      isOpen: true
+    });
+  };
+
+  handleClose = () => {
+    this.setState({
+      isOpen: false
+    });
+  };
+
   render() {
-    const { items, options } = this.state;
+    const { items, options, isOpen } = this.state;
     return (
       <Document title="Gallery | ReactPhotoswipe" className="page-gallery">
         <div>
@@ -56,7 +69,12 @@ class GalleryPage extends React.Component {
             items={items}
             options={options}
             thumbnailContent={this.getThumbnailContent}
+            isOpen={isOpen}
+            onClose={this.handleClose}
           />
+          <button type="button" className="btn btn-primary" onClick={this.openPhotoSwipe}>
+            Open
+          </button>
         </div>
       </Document>
     );
