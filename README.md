@@ -161,6 +161,8 @@ imageLoadComplete(instance, index, item);
 | items | array | [] | true | http://photoswipe.com/documentation/getting-started.html |
 | options | object | {} | false | http://photoswipe.com/documentation/options.html |
 | thumbnailContent | function | `<img src={item.src} width='100' height='100'/>` | false | Thumbnail content |
+| isOpen | bool | false | false | Use it with `onClose` prop |
+| onClose | function |  | false | Callback after close |
 | id | string |  | false |  |
 | className | string | `pswp-gallery` |  | 
 | beforeChange | function |  | false | Photoswipe event listener |
