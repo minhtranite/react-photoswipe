@@ -27,11 +27,15 @@ class PhotoSwipe extends React.Component {
     isOpen: this.props.isOpen
   };
 
+  _isMount = false;
+
   componentDidMount = () => {
     const { isOpen } = this.state;
     if (isOpen) {
       this.openPhotoSwipe(this.props);
     }
+
+    this._isMount = true;
   };
 
   componentWillReceiveProps = (nextProps) => {
@@ -48,6 +52,7 @@ class PhotoSwipe extends React.Component {
   };
 
   componentWillUnmount = () => {
+    this._isMount = false;
     this.closePhotoSwipe();
   };
 
@@ -64,7 +69,7 @@ class PhotoSwipe extends React.Component {
             args.unshift(this);
             callback(...args);
           }
-          if (event === 'destroy') {
+          if (event === 'destroy' && this._isMount) {
             self.handleClose();
           }
         });
