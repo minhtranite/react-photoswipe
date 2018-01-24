@@ -69,7 +69,7 @@ class PhotoSwipe extends React.Component {
             args.unshift(this);
             callback(...args);
           }
-          if (event === 'destroy' && this._isMount) {
+          if (event === 'destroy' && self._isMount) {
             self.handleClose();
           }
         });
