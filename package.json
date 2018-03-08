@@ -8,6 +8,10 @@
     "lint": "NODE_ENV=development eslint .",
     "build": "NODE_ENV=production gulp build"
   },
+  "repository" : { 
+    "type" : "git", 
+    "url" : "https://github.com/minhtranite/react-photoswipe.git"
+  },
   "keywords": [
     "react-component",
     "react",
