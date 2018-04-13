@@ -31,8 +31,13 @@ class PhotoSwipeGallery extends React.Component {
   thumbnails = []
   state = {
     isOpen: this.props.isOpen,
-    options: this.props.options || this.getThumbBoundsFn
+    options: this._initOptions()
   };
+
+  _initOptions = () => {
+    const { options = {} } = this.props
+    return Object.assign({ getThumbBoundsFn: this.getThumbBoundsFn }, options)
+  }
 
   getThumbBoundsFn = (index) => {
     const thumbnail = this.thumbnails[index];
@@ -54,7 +59,6 @@ class PhotoSwipeGallery extends React.Component {
   };
 
   showPhotoSwipe = index => (e) => {
-    console.log('click photo')
     e.preventDefault();
     this.setState(prevState => ({
       isOpen: true,
