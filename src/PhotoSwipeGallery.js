@@ -28,9 +28,23 @@ class PhotoSwipeGallery extends React.Component {
     }
   };
 
+  thumbnails = []
   state = {
     isOpen: this.props.isOpen,
-    options: this.props.options
+    options: this._initOptions()
+  };
+
+  _initOptions = () => {
+    const { options = {} } = this.props
+    return Object.assign({ getThumbBoundsFn: this.getThumbBoundsFn }, options)
+  }
+
+  getThumbBoundsFn = (index) => {
+    const thumbnail = this.thumbnails[index];
+    const img = thumbnail.getElementsByTagName('img')[0];
+    const pageYScroll = window.pageYOffset || document.documentElement.scrollTop;
+    const rect = img.getBoundingClientRect();
+    return { x: rect.left, y: rect.top + pageYScroll, w: rect.width };
   };
 
   componentWillReceiveProps = (nextProps) => {
@@ -44,22 +58,12 @@ class PhotoSwipeGallery extends React.Component {
     }
   };
 
-  showPhotoSwipe = itemIndex => (e) => {
+  showPhotoSwipe = index => (e) => {
     e.preventDefault();
-    const getThumbBoundsFn = ((index) => {
-      const thumbnail = this.thumbnails[index];
-      const img = thumbnail.getElementsByTagName('img')[0];
-      const pageYScroll = window.pageYOffset || document.documentElement.scrollTop;
-      const rect = img.getBoundingClientRect();
-      return { x: rect.left, y: rect.top + pageYScroll, w: rect.width };
-    });
-    const { options } = this.state;
-    options.index = itemIndex;
-    options.getThumbBoundsFn = options.getThumbBoundsFn || getThumbBoundsFn;
-    this.setState({
+    this.setState(prevState => ({
       isOpen: true,
-      options
-    });
+      options: { ...prevState.options, index }
+    }));
   };
 
   handleClose = () => {
@@ -82,7 +86,6 @@ class PhotoSwipeGallery extends React.Component {
             <div
               key={index}
               ref={(node) => {
-                this.thumbnails = this.thumbnails || [];
                 this.thumbnails[index] = node;
               }}
               className="pswp-thumbnail"
