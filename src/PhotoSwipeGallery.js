@@ -28,20 +28,25 @@ class PhotoSwipeGallery extends React.Component {
     }
   };
 
+  static getDerivedStateFromProps(props, state) {
+    const isOpenChanged = props.isOpen !== state.isOpen;
+
+    const { index } = state.options;
+    const { index: nextIndex } = props.options;
+    const isOptionIndexChanged = index !== nextIndex;
+
+    if (isOptionIndexChanged || isOpenChanged) {
+      return {
+        ...(isOpenChanged ? { isOpen: props.isOpen } : {}),
+        ...(isOptionIndexChanged ? { options: props.options } : {}),
+      };
+    }
+    return null;
+  }
+
   state = {
     isOpen: this.props.isOpen,
     options: this.props.options
-  };
-
-  componentWillReceiveProps = (nextProps) => {
-    const { isOpen } = this.state;
-    if (nextProps.isOpen) {
-      if (!isOpen) {
-        this.setState({ isOpen: true });
-      }
-    } else if (isOpen) {
-      this.setState({ isOpen: false });
-    }
   };
 
   showPhotoSwipe = itemIndex => (e) => {
