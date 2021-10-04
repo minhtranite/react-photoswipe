@@ -1,7 +1,8 @@
 import webpack from 'webpack';
 import path from 'path';
 import ExtractTextWebpackPlugin from 'extract-text-webpack-plugin';
-import CleanWebpackPlugin from 'clean-webpack-plugin';
+import { CleanWebpackPlugin } from 'clean-webpack-plugin';
+import UglifyJsPlugin from 'uglifyjs-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import pkg from '../package.json';
 
@@ -92,7 +93,8 @@ const webpackConfig = {
     ]
   },
   plugins: [
-    new CleanWebpackPlugin([DEST_DIR], {
+    new CleanWebpackPlugin({
+      cleanAfterEveryBuildPatterns: [DEST_DIR],
       verbose: false
     }),
     new webpack.DefinePlugin({
@@ -138,13 +140,9 @@ if (!HOT) {
 }
 
 if (PROD) {
-  webpackConfig.plugins = webpackConfig.plugins.concat([
-    new webpack.optimize.UglifyJsPlugin({
-      output: {
-        comments: false
-      }
-    })
-  ]);
+  webpackConfig.optimization = {
+    minimizer: [new UglifyJsPlugin()],
+  };
 }
 
 export default webpackConfig;
